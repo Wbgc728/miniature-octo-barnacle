@@ -19,7 +19,7 @@ const SearchBooks = () => {
 
   // create state to hold saved bookId values
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
-  const [ saveBook ] = useMutation(SAVE_BOOK);
+  const [saveBook] = useMutation(SAVE_BOOK);
 
   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
@@ -42,13 +42,14 @@ const SearchBooks = () => {
         throw new Error('something went wrong!');
       }
 
-      const { items } = await response.json();
+      const {items} = await response.json();
 
       const bookData = items.map((book) => ({
         bookId: book.id,
         authors: book.volumeInfo.authors || ['No author to display'],
         title: book.volumeInfo.title,
         description: book.volumeInfo.description,
+        link: book.volumeInfo.infoLink,
         image: book.volumeInfo.imageLinks?.thumbnail || '',
       }));
 
@@ -73,7 +74,7 @@ const SearchBooks = () => {
 
     try {
       await saveBook({
-        bookData: bookToSave
+        variables: {book: bookToSave}
       });
 
       // if book successfully saves to user's account, save book id to state
