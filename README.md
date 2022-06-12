@@ -15,7 +15,7 @@ Use the search bar to search for book titles.
 
 In order to save books you'll need to create an account.
 
-Once you create an account an find a book you want to save, click the save button. You can access your saved book list at the top right by clicking saved books.
+Once you create an account an find a book you want to save, click the "Save this Book!" button. You can access your saved book list at the top right by clicking "See Your Books".
 
 ## LINKS
 
